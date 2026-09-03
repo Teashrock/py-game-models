@@ -5,14 +5,17 @@ class Race(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
 
+
 class Skill(models.Model):
     name = models.CharField(max_length=255)
     bonus = models.CharField(max_length=255)
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
 
+
 class Guild(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
+
 
 class Player(models.Model):
     nickname = models.CharField(max_length=255)

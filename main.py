@@ -16,7 +16,9 @@ def main() -> None:
                     name=player_contents["race"]["name"],
                     description=player_contents["race"]["description"],
                 )[0],
-                guild=Guild.objects.get_or_create(name=player_contents["guild"]["name"])[0]
+                guild=Guild.objects.get_or_create(
+                    name=player_contents["guild"]["name"]
+                )[0]
             )
             for skill in player_contents["race"]["skills"]:
                 Skill.objects.create(
