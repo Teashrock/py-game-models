@@ -18,6 +18,15 @@ def main() -> None:
                 )[0],
                 guild=Guild.objects.get_or_create(name=player_contents["guild"]["name"])[0]
             )
+            for skill in player_contents["race"]["skills"]:
+                Skill.objects.create(
+                    name=skill["name"],
+                    bonus=skill["bonus"],
+                    race=Race.objects.get_or_create(
+                        name=player_contents["race"]["name"],
+                        description=player_contents["race"]["description"],
+                    )[0]
+                )
 
 
 if __name__ == "__main__":
