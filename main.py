@@ -13,20 +13,20 @@ def main() -> None:
             email=player_contents.get("email"),
             bio=player_contents.get("bio"),
             race=Race.objects.get_or_create(
-                name=player_contents.get("race").get("name"),
-                description=player_contents.get("race").get("description"),
+                name=player_contents.get("race", {}).get("name"),
+                description=player_contents.get("race", {}).get("description"),
             )[0],
             guild=Guild.objects.get_or_create(
-                name=player_contents.get("guild").get("name")
+                name=player_contents.get("guild", {}).get("name")
             )[0]
         )
-        for skill in player_contents.get("race").get("skills"):
-            Skill.objects.create(
+        for skill in player_contents.get("race", {}).get("skills"):
+            Skill.objects.get_or_create(
                 name=skill.get("name"),
                 bonus=skill.get("bonus"),
                 race=Race.objects.get_or_create(
-                    name=player_contents.get("race").get("name"),
-                    description=player_contents.get("race").get("description"),
+                    name=player_contents.get("race", {}).get("name"),
+                    description=player_contents.get("race", {}).get("description"),
                 )[0]
             )
 
