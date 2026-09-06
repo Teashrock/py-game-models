@@ -17,7 +17,8 @@ def main() -> None:
                 description=player_contents.get("race", {}).get("description"),
             )[0],
             guild=Guild.objects.get_or_create(
-                name=player_contents.get("guild", {}).get("name")
+                name=player_contents.get("guild", {}).get("name"),
+                description = player_contents.get("guild", {}).get("description")
             )[0]
         )
         for skill in player_contents.get("race", {}).get("skills"):
@@ -25,8 +26,8 @@ def main() -> None:
                 name=skill.get("name"),
                 bonus=skill.get("bonus"),
                 race=Race.objects.get_or_create(
-                    name=player_contents.get("race", {}).get("name"),
-                    description=player_contents.get("race", {}).get("description"),
+                    name=skill.get("race", {}).get("name"),
+                    description=skill.get("race", {}).get("description"),
                 )[0]
             )
 
