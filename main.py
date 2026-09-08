@@ -31,7 +31,9 @@ def main() -> None:
                 bonus=skill.get("bonus"),
                 race=Race.objects.get_or_create(
                     name=player_contents.get("race", {}).get("name"),
-                    description=player_contents.get("race", {}).get("description")
+                    description=player_contents.get(
+                        "race", {}
+                    ).get("description")
                 )[0]
             )
 
